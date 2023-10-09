@@ -21,3 +21,5 @@ csv file has benn put into a tabel for ease of reading
 
 -------------------------For Daniel--------------------------------------
 going over knn and determine how best to containerize the data and implement into the model
+
+look into tensor flow and get the beginning of the paper ready for adding the material that we are finding 
