@@ -1,33 +1,30 @@
-import pandas as pd 
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
-from sklearn.model_selection import train_test_split
+from __future__ import absolute_import, division, print_function, unicode_literals
 
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from IPython.display import clear_output
+from six.moves import urllib
 
-df = pd.read_csv("bot_detection_data.csv")
+import tensorflow.compat.v2.feature_column as fc
 
-print(df.head())
+import tensorflow as tf
+dftrain = pd.read_csv('bot_detection_data.csv') # training data
+dfeval = pd.read_csv() # testing data
+y_train = dftrain.pop('survived')
+y_eval = dfeval.pop('survived')
 
+##table names User ID,Username,Tweet,Retweet Count,Mention Count,Follower Count,Verified,Location,Created At,Hashtags,Bot Label
 
-df  = df.dropna()
+CATEGORICAL_COLUMNS = ['username', 'location', 'hashtags','Verified']
+NUMERIC_COLUMNS = ['retweet_count', 'mention_count', 'follower_count', 'verified', 'Bot_label']
 
-df['verified'] = df['verified'].astype(int)
+feature_columns = []
+for feature_name in CATEGORICAL_COLUMNS:
+  vocabulary = dftrain[feature_name].unique()  # gets a list of all unique values from given feature column
+  feature_columns.append(tf.feature_column.categorical_column_with_vocabulary_list(feature_name, vocabulary))
 
-x = df.drop(['Bot Label'], axis=1)
-y= df['Bot Label']
+for feature_name in NUMERIC_COLUMNS:
+  feature_columns.append(tf.feature_column.numeric_column(feature_name, dtype=tf.float32))
 
-## this seciton needs to have a feature created so that we can see if the post was interacted with by known bots 
-
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-model = Sequential()
-model.add(Dense(64, input_dim=X_train.shape[1], activation='relu'))
-model.add(Dense(1, activation='sigmoid'))
-
-# Compile the model
-model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-
-# Train the model
-model.fit(X_train, y_train, epochs=10, batch_size=32, validation_data=(X_test, y_test))
-
+print(feature_columns)
