@@ -5,6 +5,8 @@ import csv
 # use knn to determine if the data in data.csv in a bot or not with the feild Bot Label and show the overall likelyhood that anyone in the dataset is a bot
 # load dataset
 dataset = pd.read_csv("data.csv")
+
+# **REMEMBER** Convert necessary values to numerical before working with code, implementation step
 # print(dataset)
 # split dataset into training and test data
 X_train, X_test, y_train, y_test = train_test_split(dataset.iloc[:, :-1], dataset.iloc[:, -1], random_state=1)
