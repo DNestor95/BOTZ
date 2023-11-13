@@ -6,18 +6,26 @@ import matplotlib.pyplot as plt
 from IPython.display import clear_output
 from six.moves import urllib
 
-import tensorflow.compat.v2.feature_column as fc
+
+
 
 import tensorflow as tf
+from tensorflow import feature_column as fc
+
 dftrain = pd.read_csv('bot_detection_data.csv') # training data
-dfeval = pd.read_csv() # testing data
-y_train = dftrain.pop('survived')
-y_eval = dfeval.pop('survived')
+dfeval = pd.read_csv('eval.csv') # testing data
 
-##table names User ID,Username,Tweet,Retweet Count,Mention Count,Follower Count,Verified,Location,Created At,Hashtags,Bot Label
+y_train = dftrain.pop('BotLabel')
+y_eval = dfeval.pop('BotLabel')
+##User ID,Username,Tweet,RetweetCount,MentionCount,FollowerCount,Verified,Location,CreatedAt,Hashtags,BotLabel
+dftrain.head()
 
-CATEGORICAL_COLUMNS = ['username', 'location', 'hashtags','Verified']
-NUMERIC_COLUMNS = ['retweet_count', 'mention_count', 'follower_count', 'verified', 'Bot_label']
+##THESE WILL BE ALL THE LABELS TAHT CONTAIN NON NUMBERIC VALUES 
+CATEGORICAL_COLUMNS = ['Username', 'Location', 'Hashtags', 'CreatedAt']
+##THESE WILL BE ALL THE LABELS TAHT CONTAIN NUMBERIC VALUES
+
+NUMERIC_COLUMNS = ['FollowerCount', 'RetweetCount', 'MentionCount']
+
 
 feature_columns = []
 for feature_name in CATEGORICAL_COLUMNS:
