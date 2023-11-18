@@ -50,7 +50,7 @@ for feature_name in CATEGORICAL_COLUMNS:
                 dimension=embedding_dimension))
 
 # Input function
-def make_input_fn(data_df, label_df, num_epochs=20, shuffle=True, batch_size=120):
+def make_input_fn(data_df, label_df, num_epochs=10, shuffle=True, batch_size=8):
     def input_function():
         data_df['Hashtags'].fillna('', inplace=True)
         data_df.fillna('missing', inplace=True)
@@ -71,3 +71,4 @@ result = linear_est.evaluate(eval_input_fn)
 
 clear_output()
 print(result['accuracy'])
+print(result)
