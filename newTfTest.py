@@ -3,6 +3,7 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import datetime
 from IPython.display import clear_output
 from six.moves import urllib
 
@@ -61,7 +62,45 @@ def make_input_fn(data_df, label_df, num_epochs=10, shuffle=True, batch_size=8):
         ds = ds.batch(batch_size).repeat(num_epochs)
         return ds
     return input_function
+#for loop to attempt batch sizes and epoch to find the most effictive testing the batch size aginst each epoch
+batch_size = [8, 16, 32, 64, 128, 256, 512, 1024]
+epoch = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+acc = []
+for i in batch_size:
+    train_input_fn = make_input_fn(dftrain, y_train, batch_size=i)
+    eval_input_fn = make_input_fn(dfeval, y_eval, num_epochs=1, shuffle=False)
 
+    linear_est = tf.estimator.LinearClassifier(feature_columns=feature_columns)
+    linear_est.train(train_input_fn)
+    result = linear_est.evaluate(eval_input_fn)
+
+    clear_output()
+    #append acc with the result of the accuracy
+    acc.append(result['accuracy'])
+    print(result['accuracy'])
+    print(result)
+    print(i)
+    
+#for the highest accuracy in acc test the accuracy on each of the eopch
+for i in epoch:
+    train_input_fn = make_input_fn(dftrain, y_train, num_epochs=i)
+    eval_input_fn = make_input_fn(dfeval, y_eval, num_epochs=1, shuffle=False)
+
+    linear_est = tf.estimator.LinearClassifier(feature_columns=feature_columns)
+    linear_est.train(train_input_fn)
+    result = linear_est.evaluate(eval_input_fn)
+
+    clear_output()
+    print(result['accuracy'])
+    print(result)
+    print(i)
+
+        
+        
+        
+        
+        
+"""
 train_input_fn = make_input_fn(dftrain, y_train)
 eval_input_fn = make_input_fn(dfeval, y_eval, num_epochs=1, shuffle=False)
 
@@ -72,3 +111,4 @@ result = linear_est.evaluate(eval_input_fn)
 clear_output()
 print(result['accuracy'])
 print(result)
+"""
