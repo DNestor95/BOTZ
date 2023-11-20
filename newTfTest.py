@@ -65,7 +65,17 @@ def make_input_fn(data_df, label_df, num_epochs=10, shuffle=True, batch_size=8):
 #for loop to attempt batch sizes and epoch to find the most effictive testing the batch size aginst each epoch
 batch_size = [8, 16, 32, 64, 128, 256, 512, 1024]
 epoch = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-acc = []
+#dictionary for the accuracy and the batch size and epoch that it was tested with
+batch_acc_dict = {}
+epoch_acc_dict = {}
+max_batch_acc = 0
+max_batch_size = 0
+max_epoch_acc = 0
+max_epoch = 0
+
+
+
+"""
 for i in batch_size:
     train_input_fn = make_input_fn(dftrain, y_train, batch_size=i)
     eval_input_fn = make_input_fn(dfeval, y_eval, num_epochs=1, shuffle=False)
@@ -75,29 +85,74 @@ for i in batch_size:
     result = linear_est.evaluate(eval_input_fn)
 
     clear_output()
-    #append acc with the result of the accuracy
-    acc.append(result['accuracy'])
-    print(result['accuracy'])
-    print(result)
-    print(i)
     
-#for the highest accuracy in acc test the accuracy on each of the eopch
-for i in epoch:
-    train_input_fn = make_input_fn(dftrain, y_train, num_epochs=i)
-    eval_input_fn = make_input_fn(dfeval, y_eval, num_epochs=1, shuffle=False)
-
-    linear_est = tf.estimator.LinearClassifier(feature_columns=feature_columns)
-    linear_est.train(train_input_fn)
-    result = linear_est.evaluate(eval_input_fn)
-
-    clear_output()
+    print(i)
+    #add the accuracy and i to the dictiona
+    batch_acc_dict[result['accuracy']] = i
+    #if the accuracy is higher than the previous highest accuracy, set the new highest accuracy
+    if result['accuracy'] > max_batch_acc:
+        max_batch_acc = result['accuracy']
+        max_batch_size = i
+    
     print(result['accuracy'])
     print(result)
-    print(i)
+    
+    """
 
-        
-        
-        
+
+
+#function that maakes a results file for the result that is passed in
+def makeResultsFile(result, i, j):
+    #open the file
+    f = open("results.txt", "a")
+    #write the accuracy
+    f.write("Accuracy: " + str(result['accuracy']))
+    
+    
+    #write the batch size
+    f.write(" Batch Size: " + str(j))
+    #write the epoch
+    f.write(" Epoch: " + str(i))
+    f.write("\n")
+    #close the file
+    f.close()
+
+
+
+
+for i in epoch:
+    for j in batch_size:
+        train_input_fn = make_input_fn(dftrain, y_train, num_epochs=i, batch_size=j)
+        eval_input_fn = make_input_fn(dfeval, y_eval, num_epochs=1, shuffle=False)
+
+        linear_est = tf.estimator.LinearClassifier(feature_columns=feature_columns)
+        linear_est.train(train_input_fn)
+        result = linear_est.evaluate(eval_input_fn)
+
+        clear_output()
+        print(result['accuracy'])
+        print(result)
+        print("\n")
+        print("Epoch: ")
+        print(i)
+        print("\n")
+        print("Batch Size: ")
+        print(j)
+        makeResultsFile(result, i, j)
+
+#function that maakes a results file for the result that is passed in
+
+    
+    
+    
+    
+    
+
+
+
+
+
+
         
         
 """
