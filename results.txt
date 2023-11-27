@@ -47,8 +47,8 @@ Accuracy: 0.89 Batch Size: 256 Epoch: 60
 Accuracy: 0.85 Batch Size: 512 Epoch: 60
 Accuracy: 0.4975 Batch Size: 1024 Epoch: 60
 Accuracy: 0.885 Batch Size: 8 Epoch: 70
-Accuracy: 0.865 Batch Size: 16 Epoch: 70
-Accuracy: 0.9125 Batch Size: 32 Epoch: 70
+Accuracy: 0.865 Batch Size: 16 Epoch: 70 
+            Accuracy: 0.9125 Batch Size: 32 Epoch: 70  THIS IS THE HIGHEST ACCURACY
 Accuracy: 0.88 Batch Size: 64 Epoch: 70
 Accuracy: 0.89 Batch Size: 128 Epoch: 70
 Accuracy: 0.8725 Batch Size: 256 Epoch: 70

@@ -62,6 +62,7 @@ def make_input_fn(data_df, label_df, num_epochs=10, shuffle=True, batch_size=8):
         ds = ds.batch(batch_size).repeat(num_epochs)
         return ds
     return input_function
+
 #for loop to attempt batch sizes and epoch to find the most effictive testing the batch size aginst each epoch
 batch_size = [8, 16, 32, 64, 128, 256, 512, 1024]
 epoch = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
@@ -72,7 +73,6 @@ max_batch_acc = 0
 max_batch_size = 0
 max_epoch_acc = 0
 max_epoch = 0
-
 
 
 """
@@ -98,8 +98,6 @@ for i in batch_size:
     print(result)
     
     """
-
-
 
 #function that maakes a results file for the result that is passed in
 def makeResultsFile(result, i, j):
@@ -147,6 +145,7 @@ for i in epoch:
     
     
     
+#This program is going to be able to give us most of the data that we need to be able to tell if what we are wanting to do it going to work or not 
 
 
 
