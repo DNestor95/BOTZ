@@ -2,12 +2,13 @@
 TXST Human Factors Bot Detection 
 
 
------------------------------installed components ---------------------
+------------------------INSTALLED COMPONENTS---------------------
 pip install -U scikit-learn
 pip install -U tensorflow 
 pip install -U numpy
 
-------------------------TO RUN-------------------
+
+------------------------TO RUN-----------------------------------
 HELLO! 
 if you are attempting to run this program or want to use this for your own testing please make sure that you have the modeified data set downloaded and not the original. You can also replace the dataset if need be at your own risk as modifications have been made to this data for the program to run correct 
 
@@ -22,8 +23,7 @@ the above commands will run each of the models and give you the output and accur
 feel free to change the file and try your own
 
 
-
-----------------------------notes for the project-----------------------
+------------------------NOTES FOR THE PROJECT--------------------
 We need to determine the attribute that we want to learn on, and then pass the model examples that contain those attributes 
 
 possibly need to containerize the csv file for better results when training 
@@ -33,14 +33,17 @@ csv file has benn put into a table for ease of reading. This is done by accessin
 convert to numerical values (convert locations to gps coordinates or area codes / ASCII values) 
 
 
--------------------------For Daniel--------------------------------------
+------------------------FOR DANIEL-------------------------------
 going over knn and determine how best to containerize the data and implement into the model
 
 look into tensor flow and get the beginning of the paper ready for adding the material that we are finding 
--------------------------For Omar----------------------------------------
+
+
+------------------------FOR OMAR---------------------------------
 learn sklearn and tensorflow
 
--------------------------November 18th meeting---------------------------
+
+------------------------NOVEMBER 18TH MEETING--------------------
 Apply a constraint on the program, about 10,000 or less. That is 5x less than the dataset we are working with. The application of our project is work within smaller groups and companies
 
 Group size, test size, how we get new data, relation between new data and current results
@@ -63,7 +66,8 @@ Daniel managed to get the program running, obtaining an accuracy of 50%. This is
 
 A new .table file was made by Omar, printing the updated 'modded_detection_data' into a table format
 
--------------------------November 23th testing---------------------------
+
+------------------------NOVEMBER 23RD TESTING--------------------
 Testing for linear regression done and accuracy of 91.25 is the best we are able to get with our current data set. This isnt exactly what we are looing for but it is actually alot better than we expect based on our private testing 
 
 
