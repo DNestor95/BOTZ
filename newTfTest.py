@@ -10,6 +10,7 @@ from six.moves import urllib
 import tensorflow as tf
 from tensorflow import feature_column as fc
 
+
 # Load data
 dftrain = pd.read_csv('modded_detection_data.csv')  # training data
 dfeval = pd.read_csv('eval.csv')  # testing data
