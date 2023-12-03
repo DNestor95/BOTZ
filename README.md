@@ -4,9 +4,22 @@ TXST Human Factors Bot Detection
 
 -----------------------------installed components ---------------------
 pip install -U scikit-learn
+pip install -U tensorflow 
+pip install -U numpy
 
+------------------------TO RUN-------------------
+HELLO! 
+if you are attempting to run this program or want to use this for your own testing please make sure that you have the modeified data set downloaded and not the original. You can also replace the dataset if need be at your own risk as modifications have been made to this data for the program to run correct 
 
+linear regression model testing command 
+python3 newTFTest.py
 
+classification model testing command 
+python3 classificationTF.py
+
+the above commands will run each of the models and give you the output and accurace in relation to the evaluation file that is included. 
+
+feel free to change the file and try your own
 
 
 
@@ -49,3 +62,10 @@ Daniel managed to get the program running, obtaining an accuracy of 50%. This is
             3:19pm - an epoch of 10, and batch size of 16 gave a 60% accuracy
 
 A new .table file was made by Omar, printing the updated 'modded_detection_data' into a table format
+
+-------------------------November 23th testing---------------------------
+Testing for linear regression done and accuracy of 91.25 is the best we are able to get with our current data set. This isnt exactly what we are looing for but it is actually alot better than we expect based on our private testing 
+
+
+-------------------------November 23th testing---------------------------
+both the linear regression model and the classification model are created. classification is still having issues running but I am working on it and will hopefully have a working model to add to the testing for the project. 
