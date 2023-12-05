@@ -100,3 +100,4 @@ for bs in batch_size:
 
 print("Max Batch Size:", max_batch_size)
 print("Max Batch Accuracy:", max_batch_acc)
+print(results)

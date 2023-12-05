@@ -24,6 +24,11 @@ Linear regression model testing command:
 python3 newTFTest.py
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+//classification function is completely broken and I cant get it to work anymore with the updated data set 
+>>>>>>> Stashed changes
 Classification model testing command: 
 python3 classificationTF.py
 
