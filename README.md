@@ -2,18 +2,17 @@
 TXST Human Factors Bot Detection 
 12/4/20023
 
+There are 2 additional folders inside of this repo. models and additional-test-cases
+
+models contains a visualization of the tensor board for the project and the relationships the algorithm creates using the data 
+
+
 ------------------------INSTALLED COMPONENTS---------------------
 
 pip install -U scikit-learn    
 pip install -U tensorflow     
 pip install -U numpy
 
-<<<<<<< Updated upstream
-=======
-----------------------------------TO RUN--------------------------------
-HELLO! 
-if you are attempting to run this program or want to use this for your own testing please make sure that you have the modeified data set downloaded and not the original. You can also replace the dataset if need be at your own risk as modifications have been made to this data for the program to run correct 
->>>>>>> Stashed changes
 
 ------------------------TO RUN-----------------------------------
 
